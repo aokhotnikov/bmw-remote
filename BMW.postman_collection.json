@@ -1,0 +1,535 @@
+{
+	"info": {
+		"_postman_id": "23f83f14-b233-489e-8d54-20a93a9231b2",
+		"name": "BMW",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e63161bd-4c6c-4a78-a303-df9870be3492",
+						"exec": [
+							"pm.environment.set(\"access_token\", pm.response.json().access_token);",
+							"pm.environment.set(\"refresh_token\", pm.response.json().refresh_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "1zDHx6un4cDjybLENN3kyfumX2kEYigWPcQpdvDRpIBk7rOJ",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "nQv6CqtxJuXWP74xf3CJwUEP",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "MCVApp/1.5.2 (iPhone; iOS 9.1; Scale/2.00)",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Credentials",
+						"value": "nQv6CqtxJuXWP74xf3CJwUEP:1zDHx6un4cDjybLENN3kyfumX2kEYigWPcQpdvDRpIBk7rOJ",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "authenticate_user vehicle_data remote_services",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://b2vapi.bmwgroup.com/webapi/oauth/token",
+					"protocol": "https",
+					"host": [
+						"b2vapi",
+						"bmwgroup",
+						"com"
+					],
+					"path": [
+						"webapi",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user's vehicles",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://b2vapi.bmwgroup.com/webapi/v1/user/vehicles",
+					"protocol": "https",
+					"host": [
+						"b2vapi",
+						"bmwgroup",
+						"com"
+					],
+					"path": [
+						"webapi",
+						"v1",
+						"user",
+						"vehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get vehicle status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://b2vapi.bmwgroup.com/webapi/v1/user/vehicles/WBY1Z6107HV936674/status",
+					"protocol": "https",
+					"host": [
+						"b2vapi",
+						"bmwgroup",
+						"com"
+					],
+					"path": [
+						"webapi",
+						"v1",
+						"user",
+						"vehicles",
+						"WBY1Z6107HV936674",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get last trip",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://b2vapi.bmwgroup.com/webapi/v1/user/vehicles/WBY1Z6107HV936674/statistics/lastTrip",
+					"protocol": "https",
+					"host": [
+						"b2vapi",
+						"bmwgroup",
+						"com"
+					],
+					"path": [
+						"webapi",
+						"v1",
+						"user",
+						"vehicles",
+						"WBY1Z6107HV936674",
+						"statistics",
+						"lastTrip"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get charging schedules",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://b2vapi.bmwgroup.com/webapi/v1/user/vehicles/WBY1Z6107HV936674/chargingprofile",
+					"protocol": "https",
+					"host": [
+						"b2vapi",
+						"bmwgroup",
+						"com"
+					],
+					"path": [
+						"webapi",
+						"v1",
+						"user",
+						"vehicles",
+						"WBY1Z6107HV936674",
+						"chargingprofile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get vehicle destinations",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://b2vapi.bmwgroup.com/webapi/v1/user/vehicles/WBY1Z6107HV936674/destinations",
+					"protocol": "https",
+					"host": [
+						"b2vapi",
+						"bmwgroup",
+						"com"
+					],
+					"path": [
+						"webapi",
+						"v1",
+						"user",
+						"vehicles",
+						"WBY1Z6107HV936674",
+						"destinations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all trip statistics",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://b2vapi.bmwgroup.com/webapi/v1/user/vehicles/WBY1Z6107HV936674/statistics/allTrips",
+					"protocol": "https",
+					"host": [
+						"b2vapi",
+						"bmwgroup",
+						"com"
+					],
+					"path": [
+						"webapi",
+						"v1",
+						"user",
+						"vehicles",
+						"WBY1Z6107HV936674",
+						"statistics",
+						"allTrips"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get misc SoC data",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.bmw-connecteddrive.de/api/vehicle/navigation/v1/WBY1Z6107HV936674",
+					"protocol": "https",
+					"host": [
+						"www",
+						"bmw-connecteddrive",
+						"de"
+					],
+					"path": [
+						"api",
+						"vehicle",
+						"navigation",
+						"v1",
+						"WBY1Z6107HV936674"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get execution status of service",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://b2vapi.bmwgroup.com/webapi/v1/user/vehicles/WBY1Z6107HV936674/serviceExecutionStatus?serviceType=CHARGE_NOW",
+					"protocol": "https",
+					"host": [
+						"b2vapi",
+						"bmwgroup",
+						"com"
+					],
+					"path": [
+						"webapi",
+						"v1",
+						"user",
+						"vehicles",
+						"WBY1Z6107HV936674",
+						"serviceExecutionStatus"
+					],
+					"query": [
+						{
+							"key": "serviceType",
+							"value": "CHARGE_NOW"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Initiate Charging",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "serviceType",
+							"value": "CHARGE_NOW",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://b2vapi.bmwgroup.com/webapi/v1/user/vehicles/WBY1Z6107HV936674/executeService",
+					"protocol": "https",
+					"host": [
+						"b2vapi",
+						"bmwgroup",
+						"com"
+					],
+					"path": [
+						"webapi",
+						"v1",
+						"user",
+						"vehicles",
+						"WBY1Z6107HV936674",
+						"executeService"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "start Climate",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "serviceType",
+							"value": "CLIMATE_NOW",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://b2vapi.bmwgroup.com/webapi/v1/user/vehicles/WBY1Z6107HV936674/executeService",
+					"protocol": "https",
+					"host": [
+						"b2vapi",
+						"bmwgroup",
+						"com"
+					],
+					"path": [
+						"webapi",
+						"v1",
+						"user",
+						"vehicles",
+						"WBY1Z6107HV936674",
+						"executeService"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lock or Unlock the doors",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "serviceType",
+							"value": "DOOR_LOCK",
+							"type": "text"
+						},
+						{
+							"key": "serviceType",
+							"value": "DOOR_UNLOCK",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://b2vapi.bmwgroup.com/webapi/v1/user/vehicles/WBY1Z6107HV936674/executeService",
+					"protocol": "https",
+					"host": [
+						"b2vapi",
+						"bmwgroup",
+						"com"
+					],
+					"path": [
+						"webapi",
+						"v1",
+						"user",
+						"vehicles",
+						"WBY1Z6107HV936674",
+						"executeService"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
