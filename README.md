@@ -12,7 +12,7 @@ Inspiration:
 
 
 ```bash
-$ npm install wrapper-bmw
+$ npm install bmw-api
 ```
 
 ## Documentation
