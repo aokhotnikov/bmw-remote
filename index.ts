@@ -5,8 +5,18 @@
 import { AxiosError, AxiosResponse } from 'axios';
 
 import {
-  AccessTokenResponse, ApiBMW, VehicleSpecification, VehiclesResponse, ServiceType, ExecutionStatusResponse, Payload,
-  ChargingProfile, ChargingMode, VehicleInfo, ChargingAction, Car
+  AccessTokenResponse,
+  ApiBMW,
+  VehicleSpecification,
+  VehiclesResponse,
+  ServiceType,
+  ExecutionStatusResponse,
+  Payload,
+  ChargingProfile,
+  ChargingMode,
+  VehicleInfo,
+  ChargingAction,
+  Car,
 } from './api';
 import {
   InvalidCredentialsError,
