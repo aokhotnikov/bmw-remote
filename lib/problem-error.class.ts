@@ -1,13 +1,12 @@
 export enum ProblemKind {
-  Unauthorized = 0,
-  Timeout = 1,
-  NotFound = 2,
-  ServerError = 3,
-  BadRequest = 4,
-  Forbidden = 5,
-  VehicleUnreachable = 6,
-  PermanentlyInvalidCredentials = 7,
-  ShouldNotDisturb = 8
+  Unauthorized,
+  Timeout,
+  NotFound,
+  ServerError,
+  BadRequest,
+  Forbidden,
+  VehicleUnreachable,
+  PermanentlyInvalidCredentials
 }
 
 export interface Problem {
